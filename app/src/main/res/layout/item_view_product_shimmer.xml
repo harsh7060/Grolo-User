@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="2.60dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="1"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_240sdp"
+            android:backgroundTint="@color/white"
+            app:cardCornerRadius="13.00dp"
+            android:elevation="0dp"
+            android:layout_weight="0.5"
+            app:cardUseCompatPadding="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_margin="13.00dp">
+
+                <com.denzcoskun.imageslider.ImageSlider
+                    android:id="@+id/ivImageSlider"
+                    android:layout_width="wrap_content"
+                    android:layout_height="156.00dp"
+                    app:iss_auto_cycle="false"
+                    android:background="#DDDDDD"
+                    app:iss_text_align="CENTER"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+                <TextView
+                    android:id="@+id/tvProductTitle"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#DDDDDD"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    android:textSize="19.50sp"
+                    android:textColor="@color/black"/>
+
+                <TextView
+                    android:id="@+id/tvProductQuantity"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:background="#DDDDDD"
+                    android:textSize="15.60sp"
+                    android:textColor="#6F6F6F"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/tvProductPrice"
+                            android:layout_width="@dimen/_25sdp"
+                            android:layout_height="wrap_content"
+                            android:background="#DDDDDD"
+                            android:textSize="15.60sp"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:textColor="@color/black"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"/>
+
+                        <TextView
+                            android:id="@+id/tvEdit"
+                            android:layout_width="78.00dp"
+                            android:layout_height="20dp"
+                            android:background="#DDDDDD"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:textStyle="bold"
+                            android:padding="5.20dp"
+                            android:gravity="center"
+                            android:textSize="14.30sp"
+                            android:textColor="@color/green"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"/>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_240sdp"
+            android:backgroundTint="@color/white"
+            app:cardCornerRadius="13.00dp"
+            android:elevation="0dp"
+            android:layout_weight="0.5"
+            app:cardUseCompatPadding="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_margin="13.00dp">
+
+                <com.denzcoskun.imageslider.ImageSlider
+                    android:id="@+id/ivImageSlider1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="156.00dp"
+                    app:iss_auto_cycle="false"
+                    android:background="#DDDDDD"
+                    app:iss_text_align="CENTER"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+                <TextView
+                    android:id="@+id/tvProductTitle1"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#DDDDDD"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    android:textSize="19.50sp"
+                    android:textColor="@color/black"/>
+
+                <TextView
+                    android:id="@+id/tvProductQuantity1"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:background="#DDDDDD"
+                    android:textSize="15.60sp"
+                    android:textColor="#6F6F6F"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/tvProductPrice1"
+                            android:layout_width="@dimen/_25sdp"
+                            android:layout_height="wrap_content"
+                            android:background="#DDDDDD"
+                            android:textSize="15.60sp"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:textColor="@color/black"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"/>
+
+                        <TextView
+                            android:id="@+id/tvEdit1"
+                            android:layout_width="78.00dp"
+                            android:layout_height="20dp"
+                            android:background="#DDDDDD"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:textStyle="bold"
+                            android:padding="5.20dp"
+                            android:gravity="center"
+                            android:textSize="14.30sp"
+                            android:textColor="@color/green"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"/>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>    

@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "879546227224",
+    "firebase_url": "https://blinkit-3dd96-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "blinkit-3dd96",
+    "storage_bucket": "blinkit-3dd96.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:879546227224:android:11a8c1e1185e277020816d",
+        "android_client_info": {
+          "package_name": "com.example.blinkit"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyClmHjnArjYTI7wWjn3CguvV7BdmKiwMyM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
