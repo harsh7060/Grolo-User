@@ -1,4 +1,4 @@
-package com.example.blinkit
+package com.example.blinkit.auth
 
 import android.content.Intent
 import android.os.Bundle
@@ -11,11 +11,12 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.example.blinkit.R
+import com.example.blinkit.utils.Utils
 import com.example.blinkit.activities.UsersMainActivity
 import com.example.blinkit.databinding.FragmentOtpBinding
 import com.example.blinkit.models.User
 import com.example.blinkit.viewModels.AuthViewModel
-import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.launch
 
 
@@ -48,7 +49,7 @@ class OtpFragment : Fragment(){
             val otp = editTexts.joinToString(""){it.text.toString()}
 
             if(otp.length!=editTexts.size){
-                Utils.showToast(requireContext(),"Please enter the OTP❕")
+                Utils.showToast(requireContext(), "Please enter the OTP❕")
             }else{
                 editTexts.forEach{
                     it.text?.clear(); it.clearFocus()
@@ -65,7 +66,7 @@ class OtpFragment : Fragment(){
             viewModel.isSignedInSuccessfully.collect{
                 if(it){
                     Utils.hideDialog()
-                    Utils.showToast(requireContext(),"Login Successfully")
+                    Utils.showToast(requireContext(), "Login Successfully")
                     startActivity(Intent(requireContext(),UsersMainActivity::class.java))
                     requireActivity().finish()
                 }
@@ -81,7 +82,7 @@ class OtpFragment : Fragment(){
                 sentOtp.collect{
                     if(it){
                         Utils.hideDialog()
-                        Utils.showToast(requireContext(),"OTP sent successfully")
+                        Utils.showToast(requireContext(), "OTP sent successfully")
                     }
                 }
             }

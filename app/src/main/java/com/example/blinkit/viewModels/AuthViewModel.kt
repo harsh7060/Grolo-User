@@ -2,7 +2,7 @@ package com.example.blinkit.viewModels
 
 import android.app.Activity
 import androidx.lifecycle.ViewModel
-import com.example.blinkit.Utils
+import com.example.blinkit.utils.Utils
 import com.example.blinkit.models.User
 import com.google.firebase.FirebaseException
 import com.google.firebase.auth.PhoneAuthCredential

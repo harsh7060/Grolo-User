@@ -1,4 +1,6 @@
-package com.example.blinkit
+package com.example.blinkit.constant
+
+import com.example.blinkit.R
 
 object Constants {
 

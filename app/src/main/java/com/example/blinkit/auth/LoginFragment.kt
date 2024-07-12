@@ -1,4 +1,4 @@
-package com.example.blinkit
+package com.example.blinkit.auth
 
 import android.os.Bundle
 import android.text.Editable
@@ -7,13 +7,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.content.ContextCompat
-import androidx.core.widget.addTextChangedListener
 import androidx.navigation.fragment.findNavController
+import com.example.blinkit.R
+import com.example.blinkit.utils.Utils
 import com.example.blinkit.databinding.FragmentLoginBinding
-import com.google.firebase.Firebase
-import com.google.firebase.database.database
 
 class LoginFragment : Fragment() {
     private lateinit var binding : FragmentLoginBinding
@@ -32,7 +30,7 @@ class LoginFragment : Fragment() {
         binding.btnContinue.setOnClickListener{
             val number = binding.etUserNumber.text.toString()
             if(number.isEmpty() || number.length!=10){
-                Utils.showToast(requireContext(),"Please enter a valid number❗")
+                Utils.showToast(requireContext(), "Please enter a valid number❗")
             }else{
                 val bundle = Bundle()
                 bundle.putString("number",number)

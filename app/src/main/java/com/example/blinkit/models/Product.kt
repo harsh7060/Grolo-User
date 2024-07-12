@@ -1,6 +1,5 @@
 package com.example.blinkit.models
 
-import java.util.UUID
 
 data class Product(
     var productId: String? = null,

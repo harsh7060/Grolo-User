@@ -2,18 +2,16 @@ package com.example.blinkit.fragments
 
 import android.content.Context
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.blinkit.Adapters.AdapterProduct
 import com.example.blinkit.R
-import com.example.blinkit.databinding.FragmentSearchBinding
+import com.example.blinkit.databinding.FragmentCategoryBinding
 import com.example.blinkit.databinding.ItemViewProductBinding
 import com.example.blinkit.interfaces.CartListener
 import com.example.blinkit.models.Product
@@ -22,56 +20,54 @@ import com.example.blinkit.utils.Utils
 import com.example.blinkit.viewModels.UserViewModel
 import kotlinx.coroutines.launch
 
-class SearchFragment : Fragment() {
-    private lateinit var binding: FragmentSearchBinding
+class CategoryFragment : Fragment() {
+    private lateinit var binding: FragmentCategoryBinding
+    private var category: String? = null
+    private val viewModel: UserViewModel by viewModels()
     private lateinit var adapterProduct: AdapterProduct
-    val viewModel: UserViewModel by viewModels()
     private var cartListener: CartListener? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentSearchBinding.inflate(inflater)
+        binding = FragmentCategoryBinding.inflate(layoutInflater)
 
-        getAllProducts()
+        getProductsByCategory()
 
-        searchProduct()
+        setToolbarTitle()
 
-        backToHomeFragment()
+        fetchCategoryProduct()
+
+        onSearchMenuClick()
+
+        onBackClick()
 
         return binding.root
     }
 
-    private fun searchProduct() {
-        binding.etSearch.addTextChangedListener(object: TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-
-            }
-
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                val query = s.toString().trim()
-                adapterProduct.getFilter().filter(query)
-            }
-
-            override fun afterTextChanged(s: Editable?) {
-
-            }
-
-        })
-    }
-
-    private fun backToHomeFragment() {
-        binding.etBack.setOnClickListener{
-            findNavController().navigate(R.id.action_searchFragment_to_homeFragment)
+    private fun onBackClick() {
+        binding.tbCategoryFragment.setNavigationOnClickListener{
+            findNavController().navigate(R.id.action_categoryFragment_to_homeFragment)
         }
     }
 
-    private fun getAllProducts() {
+    private fun onSearchMenuClick() {
+        binding.tbCategoryFragment.setOnMenuItemClickListener{menuItem->
+            when(menuItem.itemId){
+                R.id.searchMenu->{
+                    findNavController().navigate(R.id.action_categoryFragment_to_searchFragment)
+                    true
+                }
+                else -> false
+            }
+        }
+    }
+
+    private fun fetchCategoryProduct() {
         binding.shimmerViewContainer.visibility = View.VISIBLE
         lifecycleScope.launch {
-            viewModel.fetchAllProducts().collect{
+            viewModel.getCategoryProduct(category!!).collect{
                 if(it.isEmpty()){
                     binding.rvProducts.visibility = View.GONE
                     binding.tvText.visibility = View.VISIBLE
@@ -79,17 +75,21 @@ class SearchFragment : Fragment() {
                     binding.rvProducts.visibility = View.VISIBLE
                     binding.tvText.visibility = View.GONE
                 }
-                adapterProduct = AdapterProduct(
-                    ::onAddBtnClick,
-                    ::onIncrementClick,
-                    ::onDecrementClick
-                )
+                adapterProduct = AdapterProduct(::onAddBtnClick, ::onIncrementClick, ::onDecrementClick)
                 binding.rvProducts.adapter = adapterProduct
                 adapterProduct.differ.submitList(it)
-                adapterProduct.originalList = it as ArrayList<Product>
                 binding.shimmerViewContainer.visibility = View.GONE
             }
         }
+    }
+
+    private fun setToolbarTitle() {
+        binding.tbCategoryFragment.title = category
+    }
+
+    private fun getProductsByCategory() {
+        val bundle = arguments
+        category = bundle?.getString("category")
     }
 
     private fun onAddBtnClick(product: Product, productBinding: ItemViewProductBinding) {

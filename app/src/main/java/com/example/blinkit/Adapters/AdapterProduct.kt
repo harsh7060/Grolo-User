@@ -1,6 +1,7 @@
 package com.example.blinkit.Adapters
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import android.widget.Filter
 import android.widget.Filterable
@@ -8,12 +9,16 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.denzcoskun.imageslider.models.SlideModel
-import com.example.blinkit.FilteringProduct
+import com.example.blinkit.classes.FilteringProduct
 import com.example.blinkit.databinding.ItemViewProductBinding
 import com.example.blinkit.models.Product
 
 
-class AdapterProduct() : RecyclerView.Adapter<AdapterProduct.ViewHolder>(), Filterable{
+class AdapterProduct(
+    val onAddBtnClick: (Product, ItemViewProductBinding) -> Unit,
+    val onIncrementClick: (Product, ItemViewProductBinding) -> Unit,
+    val onDecrementClick: (Product, ItemViewProductBinding) -> Unit
+) : RecyclerView.Adapter<AdapterProduct.ViewHolder>(), Filterable{
     class ViewHolder(val binding: ItemViewProductBinding): RecyclerView.ViewHolder(binding.root){
 
     }
@@ -58,6 +63,27 @@ class AdapterProduct() : RecyclerView.Adapter<AdapterProduct.ViewHolder>(), Filt
             tvProductQuantity.text = quantity
 
             tvProductPrice.text = "₹"+product.productPrice
+
+            if(product.itemCount!! > 0){
+                tvProductCount.text = product.itemCount.toString()
+                tvAdd.visibility = View.GONE
+                llProductCount.visibility = View.VISIBLE
+            }else{
+                tvAdd.visibility = View.VISIBLE
+                llProductCount.visibility = View.GONE
+            }
+
+            tvAdd.setOnClickListener{
+                onAddBtnClick(product, this)
+            }
+
+            tvIncrementCount.setOnClickListener{
+                onIncrementClick(product, this)
+            }
+
+            tvDecrementCount.setOnClickListener{
+                onDecrementClick(product, this)
+            }
         }
 
     }

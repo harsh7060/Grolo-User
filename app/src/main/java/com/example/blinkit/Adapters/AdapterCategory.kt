@@ -6,9 +6,11 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.blinkit.databinding.ItemViewProductCategoryBinding
 import com.example.blinkit.models.Category
+import kotlin.reflect.KFunction0
 
 class AdapterCategory(
-    val categoryList: ArrayList<Category>
+    val categoryList: ArrayList<Category>,
+    val onCategoryIconClick: (Category)->Unit
 ): RecyclerView.Adapter<AdapterCategory.CategoryViewHolder>() {
     class CategoryViewHolder(val binding : ItemViewProductCategoryBinding): ViewHolder(binding.root)
 
@@ -30,6 +32,9 @@ class AdapterCategory(
         holder.binding.apply {
             ivCategoryImage.setImageResource(category.image)
             tvCategoryTitle.text = category.title
+        }
+        holder.itemView.setOnClickListener{
+            onCategoryIconClick(category)
         }
     }
 }

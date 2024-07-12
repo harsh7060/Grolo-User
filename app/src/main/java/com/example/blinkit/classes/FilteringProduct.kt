@@ -1,4 +1,4 @@
-package com.example.blinkit
+package com.example.blinkit.classes
 
 import android.widget.Filter
 import com.example.blinkit.Adapters.AdapterProduct

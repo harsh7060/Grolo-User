@@ -1,12 +1,10 @@
-package com.example.blinkit
+package com.example.blinkit.utils
 
 import android.content.Context
 import android.view.LayoutInflater
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import androidx.core.content.ContentProviderCompat.requireContext
 import com.example.blinkit.databinding.ProgressDialogBinding
-import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FirebaseAuth
 
 

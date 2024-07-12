@@ -1,4 +1,4 @@
-package com.example.blinkit
+package com.example.blinkit.fragments
 
 import android.content.Intent
 import android.os.Bundle
@@ -12,6 +12,7 @@ import androidx.core.view.ViewCompat
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.example.blinkit.R
 import com.example.blinkit.activities.UsersMainActivity
 import com.example.blinkit.databinding.FragmentSplashBinding
 import com.example.blinkit.viewModels.AuthViewModel
