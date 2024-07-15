@@ -61,6 +61,7 @@
             app:boxCornerRadiusTopStart="16.90dp"
             app:cursorColor="@color/black"
             app:boxStrokeColor="@color/black"
+            app:cursorErrorColor="@color/black"
             app:hintTextColor="@color/black"
             app:endIconMode="clear_text">
 

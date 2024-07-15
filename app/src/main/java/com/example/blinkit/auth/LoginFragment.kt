@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
+import androidx.core.view.ViewCompat
 import androidx.navigation.fragment.findNavController
 import com.example.blinkit.R
 import com.example.blinkit.utils.Utils
@@ -21,8 +22,12 @@ class LoginFragment : Fragment() {
     ): View {
         binding = FragmentLoginBinding.inflate(layoutInflater)
 
+        setStatusBarAndNavigationBarColors()
+
         getUserNumber()
+
         onContinueBtnclick()
+
         return binding.root
     }
 
@@ -62,5 +67,13 @@ class LoginFragment : Fragment() {
             }
 
         } )
-        }
+    }
+
+    private fun setStatusBarAndNavigationBarColors() {
+        activity?.window?.statusBarColor = resources.getColor(R.color.white)
+        activity?.window?.navigationBarColor = resources.getColor(R.color.white)
+        val windowInsetsController = ViewCompat.getWindowInsetsController(activity?.window?.decorView!!)
+        windowInsetsController?.isAppearanceLightStatusBars = true
+        windowInsetsController?.isAppearanceLightNavigationBars = true
+    }
 }

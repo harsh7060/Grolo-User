@@ -1,5 +1,6 @@
 package com.example.blinkit.activities
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -34,13 +35,19 @@ class UsersMainActivity : AppCompatActivity(), CartListener {
         getTotalItemCountInCart()
 
         onCartClick()
+
+        onNextBtnClick()
+    }
+
+    private fun onNextBtnClick() {
+        binding.btnNext.setOnClickListener{
+            startActivity(Intent(this, OrderPlaceActivity::class.java))
+        }
     }
 
     private fun getAllCartProducts(){
         viewModel.getAll().observe(this){
-            for(i in it){
-                cartProductList = it
-            }
+            cartProductList = it
         }
     }
 
@@ -50,6 +57,10 @@ class UsersMainActivity : AppCompatActivity(), CartListener {
 
             val bs = BottomSheetDialog(this)
             bs.setContentView(bsCartProductsBinding.root)
+
+            bsCartProductsBinding.btnNext.setOnClickListener{
+                startActivity(Intent(this, OrderPlaceActivity::class.java))
+            }
 
             bsCartProductsBinding.tvNumberOfProducts.text = binding.tvNumberOfProducts.text
 
@@ -90,5 +101,10 @@ class UsersMainActivity : AppCompatActivity(), CartListener {
         viewModel.fetchTotalCartItemCount().observe(this){
             viewModel.savingCartItemCount(it + itemCount)
         }
+    }
+
+    override fun hideCartLayout() {
+        binding.llCart.visibility = View.GONE
+        binding.tvNumberOfProducts.text = 0.toString()
     }
 }

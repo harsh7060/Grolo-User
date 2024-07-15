@@ -87,15 +87,15 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/tvDecrementCount"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="-"
-                    android:textColor="#ffffff"
-                    android:textSize="19.50sp"/>
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:id="@+id/tvDecrementCount"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:gravity="center"-->
+<!--                    android:text="-"-->
+<!--                    android:textColor="#ffffff"-->
+<!--                    android:textSize="19.50sp"/>-->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -105,15 +105,15 @@
                     android:text="1"
                     android:textColor="#ffffff"
                     android:textSize="19.50sp"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/tvIncrementCount"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="+"
-                    android:textColor="#ffffff"
-                    android:textSize="19.50sp"/>
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:id="@+id/tvIncrementCount"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:gravity="center"-->
+<!--                    android:text="+"-->
+<!--                    android:textColor="#ffffff"-->
+<!--                    android:textSize="19.50sp"/>-->
             </LinearLayout>
 
         </LinearLayout>

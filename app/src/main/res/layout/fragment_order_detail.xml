@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
+    tools:context=".fragments.OrderDetailFragment">
+
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tbOrderDetailFragment"
+        android:background="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navigationIcon="@drawable/baseline_arrow_back_24"
+        app:title="Order Details"
+        app:titleTextColor="@color/black"/>
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="1.30dp"
+        android:background="#DAD4D4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tbOrderDetailFragment"/>
+    
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/cvOrderStatus"
+        android:layout_marginTop="13.00dp"
+        android:elevation="@dimen/_5sdp"
+        app:cardCornerRadius="7.80dp"
+        app:cardUseCompatPadding="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/view">
+        
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:padding="6.50dp">
+
+            <ImageView
+                android:layout_width="@dimen/_39sdp"
+                android:layout_height="@dimen/_39sdp"
+                android:id="@+id/iv1"
+                android:layout_gravity="center"
+                android:src="@drawable/orders_24dp_white"
+                android:padding="@dimen/_5sdp"
+                app:tint="@color/white"
+                android:background="@drawable/bg_circle"/>
+            
+            <View
+                android:layout_width="52.00dp"
+                android:layout_height="5.20dp"
+                android:id="@+id/view1"
+                android:layout_gravity="center_vertical"
+                android:background="#6B6464"/>
+
+            <ImageView
+                android:layout_width="@dimen/_39sdp"
+                android:layout_height="@dimen/_39sdp"
+                android:id="@+id/iv2"
+                android:layout_gravity="center"
+                android:src="@drawable/shopping_bag_24dp"
+                android:padding="@dimen/_5sdp"
+                app:tint="@color/white"
+                android:background="@drawable/bg_circle"/>
+
+            <View
+                android:layout_width="52.00dp"
+                android:layout_height="5.20dp"
+                android:id="@+id/view2"
+                android:layout_gravity="center_vertical"
+                android:background="#6B6464"/>
+
+            <ImageView
+                android:layout_width="@dimen/_39sdp"
+                android:layout_height="@dimen/_39sdp"
+                android:id="@+id/iv3"
+                android:layout_gravity="center"
+                android:src="@drawable/local_shipping_24dp_ffffff_fill0_wght400_grad0_opsz24"
+                android:padding="@dimen/_5sdp"
+                app:tint="@color/white"
+                android:background="@drawable/bg_circle"/>
+
+            <View
+                android:layout_width="52.00dp"
+                android:layout_height="5.20dp"
+                android:id="@+id/view3"
+                android:layout_gravity="center_vertical"
+                android:background="#6B6464"/>
+
+            <ImageView
+                android:layout_width="@dimen/_39sdp"
+                android:layout_height="@dimen/_39sdp"
+                android:id="@+id/iv4"
+                android:layout_gravity="center"
+                android:src="@drawable/done_outline_24dp"
+                android:padding="@dimen/_5sdp"
+                app:tint="@color/white"
+                android:background="@drawable/bg_circle"/>
+
+        </LinearLayout>
+        
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="@dimen/_5sdp"
+        app:cardUseCompatPadding="true"
+        app:cardCornerRadius="7.80dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cvOrderStatus">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/white">
+            
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="13.00dp"
+                android:textStyle="bold"
+                android:textSize="18.20sp"
+                android:textColor="@color/black"
+                android:text="Order Items"/>
+            
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/rvProductsItems"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:layout_margin="13.00dp"/>
+                
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

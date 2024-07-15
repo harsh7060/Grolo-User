@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.ViewCompat
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -33,6 +34,8 @@ class SearchFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentSearchBinding.inflate(inflater)
+
+        setStatusBarAndNavigationBarColors()
 
         getAllProducts()
 
@@ -165,7 +168,8 @@ class SearchFragment : Fragment() {
             productStock = product.productStock,
             productImage = product.productImageUris?.get(0)!!,
             productCategory = product.productCategory,
-            adminUid = product.adminUid
+            adminUid = product.adminUid,
+            productType = product.productType
         )
 
         lifecycleScope.launch {
@@ -180,5 +184,13 @@ class SearchFragment : Fragment() {
         }else{
             throw ClassCastException("Please Implement CartListener")
         }
+    }
+
+    private fun setStatusBarAndNavigationBarColors() {
+        activity?.window?.statusBarColor = resources.getColor(R.color.white)
+        activity?.window?.navigationBarColor = resources.getColor(R.color.white)
+        val windowInsetsController = ViewCompat.getWindowInsetsController(activity?.window?.decorView!!)
+        windowInsetsController?.isAppearanceLightStatusBars = true
+        windowInsetsController?.isAppearanceLightNavigationBars = true
     }
 }

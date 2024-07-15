@@ -20,4 +20,7 @@ interface CartProductDao {
 
     @Query("SELECT * FROM CartProducts")
     fun getAllCartProducts(): LiveData<List<CartProducts>>
+
+    @Query("DELETE FROM CartProducts")
+    suspend fun deleteCartProducts()
 }

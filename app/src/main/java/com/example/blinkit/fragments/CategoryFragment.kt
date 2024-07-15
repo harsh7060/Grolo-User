@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.ViewCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -32,6 +33,8 @@ class CategoryFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentCategoryBinding.inflate(layoutInflater)
+
+        setStatusBarAndNavigationBarColors()
 
         getProductsByCategory()
 
@@ -165,7 +168,8 @@ class CategoryFragment : Fragment() {
             productStock = product.productStock,
             productImage = product.productImageUris?.get(0)!!,
             productCategory = product.productCategory,
-            adminUid = product.adminUid
+            adminUid = product.adminUid,
+            productType = product.productType
         )
 
         lifecycleScope.launch {
@@ -180,5 +184,13 @@ class CategoryFragment : Fragment() {
         }else{
             throw ClassCastException("Please Implement CartListener")
         }
+    }
+
+    private fun setStatusBarAndNavigationBarColors() {
+        activity?.window?.statusBarColor = resources.getColor(R.color.white)
+        activity?.window?.navigationBarColor = resources.getColor(R.color.white)
+        val windowInsetsController = ViewCompat.getWindowInsetsController(activity?.window?.decorView!!)
+        windowInsetsController?.isAppearanceLightStatusBars = true
+        windowInsetsController?.isAppearanceLightNavigationBars = true
     }
 }

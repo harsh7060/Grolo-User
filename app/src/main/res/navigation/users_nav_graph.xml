@@ -19,6 +19,10 @@
             app:destination="@id/categoryFragment"
             app:enterAnim="@anim/from_right"
             app:popUpToInclusive="false" />
+        <action
+            android:id="@+id/action_homeFragment_to_profileFragment"
+            app:enterAnim="@anim/from_right"
+            app:destination="@id/profileFragment" />
     </fragment>
     <fragment
         android:id="@+id/searchFragment"
@@ -46,5 +50,49 @@
         <action
             android:id="@+id/action_categoryFragment_to_searchFragment"
             app:destination="@id/searchFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.blinkit.fragments.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_profileFragment_to_homeFragment"
+            app:enterAnim="@anim/from_left"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/homeFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_profileFragment_to_ordersFragment"
+            app:enterAnim="@anim/from_right"
+            app:destination="@id/ordersFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/ordersFragment"
+        android:name="com.example.blinkit.fragments.OrdersFragment"
+        android:label="fragment_orders"
+        tools:layout="@layout/fragment_orders" >
+        <action
+            android:id="@+id/action_ordersFragment_to_profileFragment"
+            app:enterAnim="@anim/from_left"
+            app:destination="@id/profileFragment"
+            app:popUpTo="@id/profileFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_ordersFragment_to_orderDetailFragment"
+            app:enterAnim="@anim/from_right"
+            app:destination="@id/orderDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/orderDetailFragment"
+        android:name="com.example.blinkit.fragments.OrderDetailFragment"
+        android:label="fragment_order_detail"
+        tools:layout="@layout/fragment_order_detail" >
+        <action
+            android:id="@+id/action_orderDetailFragment_to_ordersFragment"
+            app:enterAnim="@anim/from_left"
+            app:destination="@id/ordersFragment"
+            app:popUpTo="@id/ordersFragment"
+            app:popUpToInclusive="true" />
     </fragment>
 </navigation>

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="@dimen/_5sdp"
+        android:backgroundTint="@color/white"
+        app:cardCornerRadius="6.50dp"
+        app:cardUseCompatPadding="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="13.00dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="1"
+                android:id="@+id/llOrderDate"
+                android:layout_marginTop="6.50dp"
+                android:layout_marginBottom="6.50dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tvOrderDate"
+                    android:layout_weight="0.70"
+                    android:text="10-11-2024"
+                    android:layout_gravity="center"
+                    android:textSize="16.90sp"
+                    android:textColor="#0000FF"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tvOrderStatus"
+                    android:backgroundTint="@color/yellow"
+                    android:gravity="center"
+                    android:text="Delivered"
+                    android:layout_weight="0.30"
+                    android:textColor="@color/white"
+                    android:textSize="16.90sp"
+                    android:padding="2.50dp"
+                    android:background="@drawable/bg_order_status"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="1"
+                android:id="@+id/llAddress"
+                android:layout_marginTop="6.50dp"
+                android:layout_marginBottom="6.50dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tvOrderTitle"
+                    android:layout_weight="0.75"
+                    android:maxLines="2"
+                    android:ellipsize="end"
+                    android:text="Vegetables and Fruits, Dairy Products, Beverages, Biscuit"
+                    android:layout_gravity="center"
+                    android:textSize="16.90sp"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tvOrderAmount"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center"
+                    android:text="₹400"
+                    android:layout_weight="0.25"
+                    android:textColor="@color/green"
+                    android:textSize="16.90sp"
+                    android:textStyle="bold"
+                    android:padding="2.50dp"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

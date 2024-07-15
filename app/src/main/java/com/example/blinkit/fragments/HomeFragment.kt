@@ -29,7 +29,14 @@ class HomeFragment : Fragment() {
         setAllCategories()
         navigateToSearchFragment()
         get()
+        onProfileBtnClick()
         return binding.root
+    }
+
+    private fun onProfileBtnClick() {
+        binding.ivProfile.setOnClickListener{
+            findNavController().navigate(R.id.action_homeFragment_to_profileFragment)
+        }
     }
 
     private fun get(){

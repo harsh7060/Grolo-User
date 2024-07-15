@@ -13,7 +13,7 @@ object Constants {
         "Tea Coffee & Health Drinks",
         "Bakery & Biscuits",
         "Sweet Tooth",
-        "Ataa Rice & Dal",
+        "Flour & Rice & Dal",
         "Dry Fruits Masala & Oil",
         "Sauces & Spreads",
         "Chicken Meat & Fish",

@@ -74,6 +74,7 @@
                 app:boxCornerRadiusTopStart="19.50dp"
                 app:boxCornerRadiusTopEnd="19.50dp"
                 android:layout_weight="1"
+                app:boxStrokeColor="@color/black"
                 app:boxCornerRadiusBottomEnd="19.50dp"
                 app:boxCornerRadiusBottomStart="19.50dp"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -93,6 +94,8 @@
                 android:layout_weight="1"
                 app:boxCornerRadiusBottomEnd="19.50dp"
                 app:boxCornerRadiusBottomStart="19.50dp"
+                android:layout_marginStart="5dp"
+                app:boxStrokeColor="@color/black"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_marginTop="5.20dp">
                 <com.google.android.material.textfield.TextInputEditText
@@ -109,7 +112,9 @@
                 app:boxCornerRadiusTopEnd="19.50dp"
                 android:layout_weight="1"
                 app:boxCornerRadiusBottomEnd="19.50dp"
+                android:layout_marginStart="5dp"
                 app:boxCornerRadiusBottomStart="19.50dp"
+                app:boxStrokeColor="@color/black"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_marginTop="5.20dp">
                 <com.google.android.material.textfield.TextInputEditText
@@ -127,6 +132,8 @@
                 android:layout_weight="1"
                 app:boxCornerRadiusBottomEnd="19.50dp"
                 app:boxCornerRadiusBottomStart="19.50dp"
+                android:layout_marginStart="5dp"
+                app:boxStrokeColor="@color/black"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_marginTop="5.20dp">
                 <com.google.android.material.textfield.TextInputEditText
@@ -143,7 +150,9 @@
                 app:boxCornerRadiusTopEnd="19.50dp"
                 android:layout_weight="1"
                 app:boxCornerRadiusBottomEnd="19.50dp"
+                android:layout_marginStart="5dp"
                 app:boxCornerRadiusBottomStart="19.50dp"
+                app:boxStrokeColor="@color/black"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_marginTop="5.20dp">
                 <com.google.android.material.textfield.TextInputEditText
@@ -161,6 +170,8 @@
                 android:layout_weight="1"
                 app:boxCornerRadiusBottomEnd="19.50dp"
                 app:boxCornerRadiusBottomStart="19.50dp"
+                android:layout_marginStart="5dp"
+                app:boxStrokeColor="@color/black"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_marginTop="5.20dp">
                 <com.google.android.material.textfield.TextInputEditText
