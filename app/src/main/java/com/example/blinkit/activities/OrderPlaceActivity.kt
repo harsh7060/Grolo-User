@@ -15,11 +15,9 @@ import com.example.blinkit.databinding.ActivityOrderPlaceBinding
 import com.example.blinkit.databinding.AddressLayoutBinding
 import com.example.blinkit.interfaces.CartListener
 import com.example.blinkit.models.Orders
-import com.example.blinkit.models.User
 import com.example.blinkit.utils.Utils
 import com.example.blinkit.viewModels.UserViewModel
 import com.google.firebase.database.FirebaseDatabase
-import com.phonepe.intent.sdk.api.B2BPGRequest
 import com.razorpay.Checkout
 import com.razorpay.PaymentData
 import com.razorpay.PaymentResultWithDataListener
@@ -95,8 +93,8 @@ class OrderPlaceActivity : AppCompatActivity(), PaymentResultWithDataListener {
         try {
             val options = JSONObject()
             options.put("name","Blinkit")
-            options.put("description","Instant Grocery Delivery Application")
-            options.put("image","http://example.com/image/rzp.jpg")
+            options.put("description","Total Order Price")
+            options.put("image","https://drive.google.com/file/d/1A3aCHQ042O9Mjc7QYl93Otd80CwVnSY1/view?usp=sharing")
             options.put("theme.color", "#FFBE16")
             options.put("currency","INR")
 //            options.put("order_id", "order_DBJOWzybf0sJbb")
@@ -208,6 +206,9 @@ class OrderPlaceActivity : AppCompatActivity(), PaymentResultWithDataListener {
                         orderStatus = 0
                     )
                     viewModel.saveOrderedProducts(order)
+                    lifecycleScope.launch {
+                        viewModel.sendNotification(cartProductList[0].adminUid!!, "Ordered", "An Order is Received.")
+                    }
                 }
                 for(product in cartProductList){
                     val count = product.productCount

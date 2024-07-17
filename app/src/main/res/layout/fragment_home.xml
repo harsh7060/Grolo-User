@@ -101,13 +101,34 @@
                     android:textSize="15sp"
                     android:textStyle="bold"/>
             </LinearLayout>
+            
+            <com.facebook.shimmer.ShimmerFrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/shimmer_view_container"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/llBestSeller">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <include layout="@layout/item_view_bestseller_shimmer"/>
+                    <include layout="@layout/item_view_bestseller_shimmer"/>
+                    <include layout="@layout/item_view_bestseller_shimmer"/>
+                    <include layout="@layout/item_view_bestseller_shimmer"/>
+                    <include layout="@layout/item_view_bestseller_shimmer"/>
+                </LinearLayout>
+            </com.facebook.shimmer.ShimmerFrameLayout>
+
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvBestSellers"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:layout_marginHorizontal="6dp"
+                android:layout_height="@dimen/_160sdp"
+                android:layout_margin="@dimen/_5sdp"
+                android:layout_marginHorizontal="@dimen/_6sdp"
                 android:orientation="horizontal"
                 android:visibility="visible"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
@@ -135,10 +156,10 @@
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rvCategories"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_gravity="center"
-                    android:layout_margin="5dp"
+                    android:layout_margin="6.50dp"
                     app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                     app:spanCount="4"/>
 

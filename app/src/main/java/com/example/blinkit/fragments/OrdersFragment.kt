@@ -61,7 +61,7 @@ class OrdersFragment : Fragment() {
         }
     }
 
-    fun onOrderItemViewClick(orderedItems: OrderedItems){
+    private fun onOrderItemViewClick(orderedItems: OrderedItems){
         val bundle = Bundle()
         bundle.putInt("status", orderedItems.itemStatus!!)
         bundle.putString("orderId", orderedItems.orderId)

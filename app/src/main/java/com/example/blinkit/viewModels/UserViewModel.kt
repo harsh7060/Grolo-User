@@ -3,11 +3,16 @@ package com.example.blinkit.viewModels
 import android.app.Application
 import android.content.Context.MODE_PRIVATE
 import android.content.SharedPreferences
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.blinkit.api.ApiUtilities
 import com.example.blinkit.constant.Constants
+import com.example.blinkit.models.Bestseller
+import com.example.blinkit.models.Notification
+import com.example.blinkit.models.NotificationData
 import com.example.blinkit.models.Orders
 import com.example.blinkit.models.Product
 import com.example.blinkit.models.User
@@ -15,6 +20,7 @@ import com.example.blinkit.roomdb.CartProductDao
 import com.example.blinkit.roomdb.CartProducts
 import com.example.blinkit.roomdb.CartProductsDatabase
 import com.example.blinkit.utils.Utils
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -25,6 +31,9 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.callbackFlow
 import org.checkerframework.checker.mustcall.qual.MustCallAlias
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class UserViewModel(application: Application): AndroidViewModel(application) {
 
@@ -184,6 +193,10 @@ class UserViewModel(application: Application): AndroidViewModel(application) {
         FirebaseDatabase.getInstance().getReference("All Users").child("Users").child(Utils.getCurrentUserId()).child("userAddress").setValue(address)
     }
 
+    fun logoutUser(){
+        FirebaseAuth.getInstance().signOut()
+    }
+
     fun getUserAddress(callback: (String) -> Unit){
         val db = FirebaseDatabase.getInstance().getReference("All Users").child("Users").child(Utils.getCurrentUserId()).child("userAddress")
         db.addListenerForSingleValueEvent(object: ValueEventListener{
@@ -207,6 +220,35 @@ class UserViewModel(application: Application): AndroidViewModel(application) {
         FirebaseDatabase.getInstance().getReference("Admins").child("Orders").child(orders.orderId!!).setValue(orders)
     }
 
+    fun fetchProductTypes(): Flow<List<Bestseller>> = callbackFlow {
+        val db = FirebaseDatabase.getInstance().getReference("Admins/ProductType")
+
+        val eventListener = object : ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val productTypeList = ArrayList<Bestseller>()
+                for(productType in snapshot.children){
+                    val productTypeName = productType.key
+
+                    val productList = ArrayList<Product>()
+                    for(products in productType.children){
+                        val product = products.getValue(Product::class.java)
+                        productList.add(product!!)
+                    }
+                    val bestseller = Bestseller(productType = productTypeName, products = productList)
+                    productTypeList.add(bestseller)
+                }
+                trySend(productTypeList)
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+
+        }
+        db.addValueEventListener(eventListener)
+        awaitClose {db.removeEventListener(eventListener) }
+    }
+
 
     //Shared Preferences
     fun savingCartItemCount(itemCount: Int){
@@ -227,5 +269,29 @@ class UserViewModel(application: Application): AndroidViewModel(application) {
         val status = MutableLiveData<Boolean>()
         status.value = sharedPreferences.getBoolean("addressStatus", false)
         return status
+    }
+
+
+
+    //Retrofit
+    suspend fun sendNotification(adminUid: String, title: String, message: String){
+        val getToken = FirebaseDatabase.getInstance().getReference("Admins").child("AdminInfo").child(adminUid).child("adminToken").get()
+        getToken.addOnCompleteListener{task->
+            val token = task.result.getValue(String::class.java)
+            val notification = Notification(token, NotificationData(title, message))
+            ApiUtilities.notificationApi.sendNotification(notification).enqueue(object : Callback<Notification>{
+                override fun onResponse(
+                    call: Call<Notification>,
+                    response: Response<Notification>
+                ) {
+                    Log.d("GGG", "Notification Sent")
+                }
+
+                override fun onFailure(call: Call<Notification>, t: Throwable) {
+                    TODO("Not yet implemented")
+                }
+
+            })
+        }
     }
 }

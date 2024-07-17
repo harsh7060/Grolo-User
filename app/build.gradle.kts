@@ -98,11 +98,7 @@ dependencies {
     implementation("com.github.bumptech.glide:glide:4.16.0")
     annotationProcessor ("com.github.bumptech.glide:compiler:4.16.0")
 
-
-    //PhonePe
-    implementation("phonepe.intentsdk.android.release:IntentSDK:2.4.3")
-
-
+    //Razorpay
     implementation("com.razorpay:checkout:1.6.38")
 
     //retrofit

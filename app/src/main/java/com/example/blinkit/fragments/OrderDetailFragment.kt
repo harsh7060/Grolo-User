@@ -47,7 +47,7 @@ class OrderDetailFragment : Fragment() {
         }
     }
 
-    suspend fun getOrderedProducts() {
+    private suspend fun getOrderedProducts() {
         viewModel.getOrderedProducts(orderId).collect{cartList->
             adapterCartProducts = AdapterCartProducts()
             binding.rvProductsItems.adapter = adapterCartProducts

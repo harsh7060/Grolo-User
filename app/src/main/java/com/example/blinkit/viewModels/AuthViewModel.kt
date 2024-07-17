@@ -9,6 +9,7 @@ import com.google.firebase.auth.PhoneAuthCredential
 import com.google.firebase.auth.PhoneAuthOptions
 import com.google.firebase.auth.PhoneAuthProvider
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.messaging.FirebaseMessaging
 import kotlinx.coroutines.flow.MutableStateFlow
 import java.util.concurrent.TimeUnit
 
@@ -56,15 +57,18 @@ class AuthViewModel: ViewModel(){
 
     fun signInWithPhoneAuthCredential(otp: String, userNumber: String, user: User) {
         val credential = PhoneAuthProvider.getCredential(_verificationId.value.toString(), otp)
-        Utils.getAuthInstance().signInWithCredential(credential)
-            .addOnCompleteListener{ task ->
-                user.uid = Utils.getCurrentUserId()
-                if (task.isSuccessful) {
-                    FirebaseDatabase.getInstance().getReference("All Users").child("Users").child(user.uid!!).setValue(user)
-                    isSignedInSuccessfully.value = true
-                } else {
+        FirebaseMessaging.getInstance().token.addOnCompleteListener{task->
+            user.userToken = task.result
+            Utils.getAuthInstance().signInWithCredential(credential)
+                .addOnCompleteListener{ task ->
+                    user.uid = Utils.getCurrentUserId()
+                    if (task.isSuccessful) {
+                        FirebaseDatabase.getInstance().getReference("All Users").child("Users").child(user.uid!!).setValue(user)
+                        isSignedInSuccessfully.value = true
+                    } else {
 
+                    }
                 }
-            }
+        }
     }
 }
