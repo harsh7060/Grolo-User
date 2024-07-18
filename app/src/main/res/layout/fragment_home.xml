@@ -11,7 +11,7 @@
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBar"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_230sdp"
+        android:layout_height="350dp"
         android:background="@drawable/app_bar_bg">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
@@ -40,15 +40,38 @@
                     android:layout_margin="@dimen/_5sdp"
                     android:src="@drawable/account_circle_24dp_fill0_wght400_grad0_opsz24"
                     app:layout_collapseMode="parallax"/>
-                
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cvImageSlider"
+                    android:layout_width="match_parent"
+                    app:layout_collapseMode="pin"
+                    app:cardUseCompatPadding="true"
+                    android:layout_marginStart="13.00dp"
+                    android:layout_marginEnd="13.00dp"
+                    android:layout_marginTop="3.00dp"
+                    android:layout_marginBottom="3.00dp"
+                    android:layout_height="200dp"
+                    app:cardCornerRadius="15.00dp">
+
+                    <com.denzcoskun.imageslider.ImageSlider
+                        android:id="@+id/image_slider"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:iss_auto_cycle="true"
+                        app:iss_delay="2000"
+                        app:iss_period="2000"
+                        app:iss_text_align="CENTER" />
+
+                </androidx.cardview.widget.CardView>
+
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/searchCV"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_50sdp"
                     app:cardUseCompatPadding="true"
                     app:layout_collapseMode="pin"
-                    android:layout_marginStart="@dimen/_3sdp"
-                    android:layout_marginEnd="@dimen/_3sdp"
+                    android:layout_marginStart="13.00dp"
+                    android:layout_marginEnd="13.00dp"
                     app:cardCornerRadius="@dimen/_10sdp">
 
                     <TextView
@@ -65,6 +88,7 @@
                         app:drawableStartCompat="@drawable/search_24dp_fill0_wght400_grad0_opsz24__1_"/>
 
                 </com.google.android.material.card.MaterialCardView>
+
             </LinearLayout>
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>

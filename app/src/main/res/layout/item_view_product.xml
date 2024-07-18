@@ -39,9 +39,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Product Title"
+                android:layout_marginTop="13.00dp"
                 android:maxLines="1"
                 android:ellipsize="end"
-                android:textSize="19.50sp"
+                android:textSize="17.50sp"
                 android:textColor="@color/black"/>
 
             <TextView

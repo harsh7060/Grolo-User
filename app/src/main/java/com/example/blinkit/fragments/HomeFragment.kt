@@ -7,9 +7,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.denzcoskun.imageslider.constants.ScaleTypes
+import com.denzcoskun.imageslider.interfaces.ItemClickListener
+import com.denzcoskun.imageslider.models.SlideModel
 import com.example.blinkit.Adapters.AdapterBestseller
 import com.example.blinkit.Adapters.AdapterCategory
 import com.example.blinkit.Adapters.AdapterProduct
@@ -41,13 +45,58 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentHomeBinding.inflate(layoutInflater)
+
         setStatusBarColor()
+
         setAllCategories()
+
         fetchBestseller()
+
+        setImageSlider()
+
         navigateToSearchFragment()
+
         get()
+
         onProfileBtnClick()
+
         return binding.root
+    }
+
+    private fun setImageSlider() {
+        val imageList = ArrayList<SlideModel>()
+        imageList.add(SlideModel(R.drawable.b1, ScaleTypes.FIT))
+        imageList.add(SlideModel(R.drawable.b2, ScaleTypes.FIT))
+        imageList.add(SlideModel(R.drawable.b3, ScaleTypes.FIT))
+
+        val imageslider = binding.imageSlider
+        imageslider.setImageList(imageList)
+        imageslider.setImageList(imageList, ScaleTypes.FIT)
+
+        imageslider.setItemClickListener(object: ItemClickListener {
+            override fun doubleClick(position: Int) {
+                TODO("Not yet implemented")
+            }
+
+            override fun onItemSelected(position: Int) {
+                when(position){
+                    0->{
+                        val bundle = Bundle()
+                        bundle.putString("category", "Pharma & Wellness")
+                        findNavController().navigate(R.id.action_homeFragment_to_categoryFragment, bundle)
+                    }1->{
+                        val bundle = Bundle()
+                        bundle.putString("category", "Pet Care")
+                        findNavController().navigate(R.id.action_homeFragment_to_categoryFragment, bundle)
+                    }2->{
+                        val bundle = Bundle()
+                        bundle.putString("category", "Baby Care")
+                        findNavController().navigate(R.id.action_homeFragment_to_categoryFragment, bundle)
+                    }
+                }
+
+            }
+        })
     }
 
     private fun fetchBestseller() {
@@ -201,7 +250,6 @@ class HomeFragment : Fragment() {
             throw ClassCastException("Please Implement CartListener")
         }
     }
-
 
     private fun setStatusBarColor() {
         activity?.window?.statusBarColor = resources.getColor(R.color.green)

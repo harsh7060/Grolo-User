@@ -18,10 +18,12 @@ import com.example.blinkit.databinding.FragmentProfileBinding
 import com.example.blinkit.databinding.LogoutLayoutBinding
 import com.example.blinkit.utils.Utils
 import com.example.blinkit.viewModels.UserViewModel
+import com.google.firebase.database.FirebaseDatabase
 
 class ProfileFragment : Fragment() {
     private lateinit var binding: FragmentProfileBinding
     private val viewModel: UserViewModel by viewModels()
+    private lateinit var userPhoneNumber: String
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,6 +32,8 @@ class ProfileFragment : Fragment() {
         binding = FragmentProfileBinding.inflate(layoutInflater)
 
         setStatusBarAndNavigationBarColors()
+
+        setUserDetails()
 
         onBackBtnClick()
 
@@ -40,6 +44,14 @@ class ProfileFragment : Fragment() {
         onLogoutBtnClick()
 
         return binding.root
+    }
+
+    private fun setUserDetails() {
+        val uid = Utils.getCurrentUserId()
+        val db = FirebaseDatabase.getInstance().getReference("All Users").child("Users").child(uid)
+        db.get().addOnSuccessListener {
+            binding.tvUserNumber.text = it.child("userPhoneNumber").value.toString()
+        }
     }
 
     private fun onLogoutBtnClick() {
