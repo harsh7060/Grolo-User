@@ -3,6 +3,7 @@ package com.example.blinkit.activities
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
@@ -195,7 +196,9 @@ class OrderPlaceActivity : AppCompatActivity(), PaymentResultWithDataListener {
 
     private fun saveOrder() {
         viewModel.getAll().observe(this){cartProductList ->
+            Log.d("HHHHHHHHHHHHHHHHH", "error")
             if(cartProductList.isNotEmpty()){
+                Log.d("aaaaaaaaaaaA", "DDFDFD")
                 viewModel.getUserAddress { address->
                     val order = Orders(
                         orderId = Utils.getRandomId(),
@@ -206,9 +209,6 @@ class OrderPlaceActivity : AppCompatActivity(), PaymentResultWithDataListener {
                         orderStatus = 0
                     )
                     viewModel.saveOrderedProducts(order)
-                    lifecycleScope.launch {
-                        viewModel.sendNotification(cartProductList[0].adminUid!!, "Ordered", "An Order is Received.")
-                    }
                 }
                 for(product in cartProductList){
                     val count = product.productCount
@@ -217,6 +217,7 @@ class OrderPlaceActivity : AppCompatActivity(), PaymentResultWithDataListener {
                         viewModel.saveProductsAfterOrder(stock, product)
                     }
                 }
+
             }
         }
     }

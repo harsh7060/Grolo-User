@@ -1,6 +1,8 @@
 package com.example.blinkit.viewModels
 
 import android.app.Activity
+import android.content.Context
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import com.example.blinkit.utils.Utils
 import com.example.blinkit.models.User
@@ -14,11 +16,11 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import java.util.concurrent.TimeUnit
 
 class AuthViewModel: ViewModel(){
-    private val _verificationId = MutableStateFlow<String?>(null)
-    private val _sentOtp = MutableStateFlow<Boolean>(false)
-    val sentOtp = _sentOtp
     private val _isSignedInSuccessfully = MutableStateFlow<Boolean>(false)
     val isSignedInSuccessfully = _isSignedInSuccessfully
+
+    private val _isSignedUpSuccessfully = MutableStateFlow<Boolean>(false)
+    val isSignedUpSuccessfully = _isSignedUpSuccessfully
 
     private val _isCurrentUser = MutableStateFlow<Boolean>(false)
     val isCurrentUser = _isCurrentUser
@@ -29,46 +31,27 @@ class AuthViewModel: ViewModel(){
         }
     }
 
-    fun sendOtp(phoneNumber: String, activity: Activity){
-        val callbacks = object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
-
-            override fun onVerificationCompleted(credential: PhoneAuthCredential) {
+    fun signInWithCredentials(email: String, password: String, context: Context) {
+        Utils.getAuthInstance().signInWithEmailAndPassword(email, password)
+            .addOnCompleteListener{task->
+                if(task.isSuccessful){
+                    isSignedInSuccessfully.value = true
+                }else{
+                    Utils.showToast(context, "Login Unsuccessfully")
+                }
             }
-
-            override fun onVerificationFailed(e: FirebaseException) {
-            }
-
-            override fun onCodeSent(
-                verificationId: String,
-                token: PhoneAuthProvider.ForceResendingToken,
-            ) {
-                _verificationId.value = verificationId
-                _sentOtp.value = true
-            }
-        }
-        val options = PhoneAuthOptions.newBuilder(Utils.getAuthInstance())
-            .setPhoneNumber("+91$phoneNumber") // Phone number to verify
-            .setTimeout(60L, TimeUnit.SECONDS) // Timeout and unit
-            .setActivity(activity) // Activity (for callback binding)
-            .setCallbacks(callbacks) // OnVerificationStateChangedCallbacks
-            .build()
-        PhoneAuthProvider.verifyPhoneNumber(options)
     }
 
-    fun signInWithPhoneAuthCredential(otp: String, userNumber: String, user: User) {
-        val credential = PhoneAuthProvider.getCredential(_verificationId.value.toString(), otp)
-        FirebaseMessaging.getInstance().token.addOnCompleteListener{task->
-            user.userToken = task.result
-            Utils.getAuthInstance().signInWithCredential(credential)
-                .addOnCompleteListener{ task ->
-                    user.uid = Utils.getCurrentUserId()
-                    if (task.isSuccessful) {
-                        FirebaseDatabase.getInstance().getReference("All Users").child("Users").child(user.uid!!).setValue(user)
-                        isSignedInSuccessfully.value = true
-                    } else {
-
-                    }
+    fun signUpWithCredentials(email: String, password: String, user: User, context: Context){
+        Utils.getAuthInstance().createUserWithEmailAndPassword(email, password)
+            .addOnCompleteListener{task->
+                user.uid = Utils.getCurrentUserId()
+                if(task.isSuccessful){
+                    FirebaseDatabase.getInstance().getReference("All Users").child("Users").child(user.uid!!).setValue(user)
+                    isSignedUpSuccessfully.value = true
+                }else{
+                    Utils.showToast(context, "User Registered Unsuccessfully")
                 }
-        }
+            }
     }
 }

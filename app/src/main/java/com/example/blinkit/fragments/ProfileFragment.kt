@@ -1,6 +1,8 @@
 package com.example.blinkit.fragments
 
+import android.content.Context.MODE_PRIVATE
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -51,6 +53,8 @@ class ProfileFragment : Fragment() {
         val db = FirebaseDatabase.getInstance().getReference("All Users").child("Users").child(uid)
         db.get().addOnSuccessListener {
             binding.tvUserNumber.text = it.child("userPhoneNumber").value.toString()
+            binding.tvUserName.text = it.child("userName").value.toString()
+            binding.tvUserEmail.text = it.child("userEmail").value.toString()
         }
     }
 

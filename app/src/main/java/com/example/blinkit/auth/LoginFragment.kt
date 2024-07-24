@@ -1,5 +1,6 @@
 package com.example.blinkit.auth
 
+import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -9,13 +10,22 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.blinkit.R
+import com.example.blinkit.activities.UsersMainActivity
 import com.example.blinkit.utils.Utils
 import com.example.blinkit.databinding.FragmentLoginBinding
+import com.example.blinkit.models.User
+import com.example.blinkit.viewModels.AuthViewModel
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 
 class LoginFragment : Fragment() {
     private lateinit var binding : FragmentLoginBinding
+    private val viewModel : AuthViewModel by viewModels()
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -24,49 +34,40 @@ class LoginFragment : Fragment() {
 
         setStatusBarAndNavigationBarColors()
 
-        getUserNumber()
+        onSignUpClick()
 
-        onContinueBtnclick()
+        onLoginClick()
 
         return binding.root
     }
 
-    private fun onContinueBtnclick() {
-        binding.btnContinue.setOnClickListener{
-            val number = binding.etUserNumber.text.toString()
-            if(number.isEmpty() || number.length!=10){
-                Utils.showToast(requireContext(), "Please enter a valid number❗")
-            }else{
-                val bundle = Bundle()
-                bundle.putString("number",number)
-                findNavController().navigate(R.id.action_loginFragment_to_otpFragment,bundle)
-            }
+    private fun onSignUpClick() {
+        binding.tvSignUp.setOnClickListener{
+            findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
         }
     }
 
-    private fun getUserNumber(){
-        binding.etUserNumber.addTextChangedListener ( object : TextWatcher{
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-            }
-
-            override fun onTextChanged(number: CharSequence?, start: Int, before: Int, count: Int) {
-                val len = number?.length
-                if (len != null) {
-                    if (len >= 10) {
-                        binding.btnContinue.setBackgroundColor(
-                            ContextCompat.getColor(
-                                requireContext(),
-                                R.color.yellow
-                            )
-                        )
+    private fun onLoginClick(){
+        binding.btnLogin.setOnClickListener{
+            Utils.showDialog(requireContext(), "Logging in...")
+            val email = binding.etUserEmail.text.toString()
+            val password = binding.etUserPassword.text.toString()
+            if(email.isEmpty() || password.isEmpty()){
+                Utils.showToast(requireContext(), "Please enter a valid details❗")
+            }else{
+                viewModel.signInWithCredentials(email, password, requireContext())
+                lifecycleScope.launch {
+                    viewModel.isSignedInSuccessfully.collect{
+                        if(it){
+                            Utils.showToast(requireContext(), "Login Successfully")
+                            Utils.hideDialog()
+                            startActivity(Intent(requireContext(), UsersMainActivity::class.java))
+                            requireActivity().finish()
+                        }
                     }
                 }
             }
-            override fun afterTextChanged(s: Editable?) {
-
-            }
-
-        } )
+        }
     }
 
     private fun setStatusBarAndNavigationBarColors() {

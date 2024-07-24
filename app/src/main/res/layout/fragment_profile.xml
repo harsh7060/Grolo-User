@@ -46,10 +46,28 @@
             android:textStyle="bold"/>
 
         <TextView
+            android:id="@+id/tvUserName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Name"
+            android:textSize="17.50sp"
+            android:layout_marginTop="6.50dp"
+            android:textColor="@color/black"/>
+
+        <TextView
             android:id="@+id/tvUserNumber"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="9999999999"
+            android:textSize="17.50sp"
+            android:layout_marginTop="6.50dp"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:id="@+id/tvUserEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="email"
             android:textSize="17.50sp"
             android:layout_marginTop="6.50dp"
             android:textColor="@color/black"/>

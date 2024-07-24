@@ -8,87 +8,144 @@
     android:orientation="vertical"
     android:background="@color/white">
 
-    <LinearLayout
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_height="0dp"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
-        <ImageView
-            android:id="@+id/ivLoginImage"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="400sp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/login_image" />
+            android:layout_height="match_parent">
 
-        <ImageView
-            android:layout_width="65.00dp"
-            android:layout_height="65.00dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="80.00dp"
-            android:src="@drawable/app_icon" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="13.00dp"
-            android:text="India's last minute app"
-            android:textColor="@color/black"
-            android:textSize="22.10sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Login or sign up"
-            android:textSize="16.90sp" />
-
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="26.00dp"
-            android:layout_marginTop="29.50dp"
-            app:boxCornerRadiusBottomEnd="16.90dp"
-            app:boxCornerRadiusBottomStart="16.90dp"
-            app:boxCornerRadiusTopEnd="16.90dp"
-            app:boxCornerRadiusTopStart="16.90dp"
-            app:cursorColor="@color/black"
-            app:boxStrokeColor="@color/black"
-            app:cursorErrorColor="@color/black"
-            app:hintTextColor="@color/black"
-            app:endIconMode="clear_text">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etUserNumber"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:drawableStart="@drawable/ic_pnone"
-                android:drawablePadding="9.10dp"
-                android:hint="Enter mobile number"
-                android:inputType="number" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0">
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_continue"
-            android:layout_width="match_parent"
-            android:layout_height="58.50dp"
-            android:layout_gravity="center"
-            android:layout_marginHorizontal="26.00dp"
-            android:layout_marginTop="20.50dp"
-            android:layout_marginBottom="8dp"
-            android:text="Continue"
-            android:textSize="16sp"
-            android:textAllCaps="false"
-            android:backgroundTint="@color/yellow"
-            app:cornerRadius="10dp"
-            android:textColor="@color/black"/>
-    </LinearLayout>
+                <ImageView
+                    android:id="@+id/ivLoginImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="300sp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/login_image" />
+
+                <ImageView
+                    android:layout_width="65.00dp"
+                    android:layout_height="65.00dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="40.00dp"
+                    android:src="@drawable/app_icon" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="13.00dp"
+                    android:text="India's last minute app"
+                    android:textColor="@color/black"
+                    android:textSize="22.10sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Login"
+                    android:textSize="16.90sp" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="26.00dp"
+                    android:layout_marginTop="10.50dp"
+                    app:boxCornerRadiusBottomEnd="16.90dp"
+                    app:boxCornerRadiusBottomStart="16.90dp"
+                    app:boxCornerRadiusTopEnd="16.90dp"
+                    app:boxCornerRadiusTopStart="16.90dp"
+                    app:cursorColor="@color/black"
+                    app:boxStrokeColor="@color/black"
+                    app:cursorErrorColor="@color/black"
+                    app:hintTextColor="@color/black"
+                    app:endIconMode="clear_text">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etUserEmail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableStart="@drawable/mail_24dp"
+                        android:drawablePadding="9.10dp"
+                        android:hint="Enter Email"
+                        android:inputType="textEmailAddress" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="26.00dp"
+                    android:layout_marginTop="10.50dp"
+                    app:boxCornerRadiusBottomEnd="16.90dp"
+                    app:boxCornerRadiusBottomStart="16.90dp"
+                    app:boxCornerRadiusTopEnd="16.90dp"
+                    app:boxCornerRadiusTopStart="16.90dp"
+                    app:cursorColor="@color/black"
+                    app:boxStrokeColor="@color/black"
+                    app:cursorErrorColor="@color/black"
+                    app:hintTextColor="@color/black"
+                    app:endIconMode="password_toggle">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etUserPassword"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableStart="@drawable/lock_24dp"
+                        android:drawablePadding="9.10dp"
+                        android:hint="Enter Password"
+                        android:inputType="textPassword" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_Login"
+                    android:layout_width="match_parent"
+                    android:layout_height="58.50dp"
+                    android:layout_gravity="center"
+                    android:layout_marginHorizontal="26.00dp"
+                    android:layout_marginTop="20.50dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="Login"
+                    android:textSize="16sp"
+                    android:textAllCaps="false"
+                    android:backgroundTint="@color/yellow"
+                    app:cornerRadius="10dp"
+                    android:textColor="@color/black"/>
+
+                <TextView
+                    android:id="@+id/tvSignUp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Don't have an account?Sign Up"
+                    android:textColor="@color/black"
+                    android:layout_gravity="center"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="20dp"/>
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

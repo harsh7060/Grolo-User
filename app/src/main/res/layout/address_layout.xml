@@ -40,44 +40,41 @@
                     android:textStyle="bold"
                     android:layout_marginTop="13.0dp"/>
 
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/categoryTil"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                    android:layout_marginHorizontal="26.00dp"
+                    android:layout_marginTop="13.00dp"
+                    app:boxCornerRadiusBottomEnd="16.90dp"
+                    app:boxCornerRadiusBottomStart="16.90dp"
+                    app:boxCornerRadiusTopEnd="16.90dp"
+                    app:boxCornerRadiusTopStart="16.90dp"
+                    app:cursorColor="@color/black"
+                    app:boxStrokeColor="@color/black"
+                    app:hintTextColor="@color/black"
+                    app:endIconMode="clear_text">
+                    <AutoCompleteTextView
+                        android:id="@+id/etAddress"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Enter address(House no.,Area,etc)"
+                        android:inputType="text"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="horizontal"
                     android:baselineAligned="false"
                     android:layout_marginHorizontal="26.00dp"
-                    android:layout_marginTop="13.00dp"
                     android:weightSum="1">
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:layout_marginHorizontal="26.00dp"
-                        android:layout_marginTop="1.30dp"
-                        android:layout_marginEnd="2.60dp"
-                        android:layout_weight="0.5"
-                        app:boxCornerRadiusBottomEnd="16.90dp"
-                        app:boxCornerRadiusBottomStart="16.90dp"
-                        app:boxCornerRadiusTopEnd="16.90dp"
-                        app:boxCornerRadiusTopStart="16.90dp"
-                        app:cursorColor="@color/black"
-                        app:boxStrokeColor="@color/black"
-                        app:endIconMode="clear_text"
-                        app:hintTextColor="@color/black">
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/etPincode"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:hint="Pincode"
-                            android:inputType="number"
-                            android:drawablePadding="9.10dp"/>
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                         android:layout_marginStart="2.60dp"
                         android:layout_marginEnd="2.60dp"
                         android:layout_weight="0.5"
@@ -85,16 +82,17 @@
                         app:boxCornerRadiusBottomStart="16.90dp"
                         app:boxCornerRadiusTopEnd="16.90dp"
                         app:boxCornerRadiusTopStart="16.90dp"
-                        app:cursorColor="@color/black"
                         app:boxStrokeColor="@color/black"
-                        app:endIconMode="clear_text"
+                        app:cursorColor="@color/black"
                         app:hintTextColor="@color/black">
-                        <AutoCompleteTextView
-                            android:id="@+id/etPhoneNo"
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etCity"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="Phone no." />
+                            android:hint="City"
+                            android:inputType="text"/>
                     </com.google.android.material.textfield.TextInputLayout>
+
                 </LinearLayout>
 
                 <LinearLayout
@@ -130,49 +128,58 @@
                             android:drawablePadding="9.10dp"/>
                     </com.google.android.material.textfield.TextInputLayout>
 
+
                     <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:layout_marginStart="2.60dp"
+                        android:layout_marginHorizontal="26.00dp"
+                        android:layout_marginTop="1.30dp"
                         android:layout_marginEnd="2.60dp"
                         android:layout_weight="0.5"
                         app:boxCornerRadiusBottomEnd="16.90dp"
                         app:boxCornerRadiusBottomStart="16.90dp"
                         app:boxCornerRadiusTopEnd="16.90dp"
                         app:boxCornerRadiusTopStart="16.90dp"
-                        app:boxStrokeColor="@color/black"
                         app:cursorColor="@color/black"
+                        app:boxStrokeColor="@color/black"
+                        app:endIconMode="clear_text"
                         app:hintTextColor="@color/black">
                         <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/etCity"
+                            android:id="@+id/etPincode"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="City"
-                            android:inputType="text"/>
+                            android:hint="Pincode"
+                            android:inputType="number"
+                            android:maxLength="6"
+                            android:digits="0123456789"
+                            android:drawablePadding="9.10dp"/>
                     </com.google.android.material.textfield.TextInputLayout>
+
                 </LinearLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/categoryTil"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                    android:layout_marginHorizontal="26.00dp"
+                    android:layout_marginStart="24.60dp"
+                    android:layout_marginEnd="24.60dp"
+                    android:layout_marginTop="1.30dp"
                     app:boxCornerRadiusBottomEnd="16.90dp"
                     app:boxCornerRadiusBottomStart="16.90dp"
                     app:boxCornerRadiusTopEnd="16.90dp"
                     app:boxCornerRadiusTopStart="16.90dp"
                     app:cursorColor="@color/black"
                     app:boxStrokeColor="@color/black"
-                    app:hintTextColor="@color/black"
-                    app:endIconMode="clear_text">
+                    app:endIconMode="clear_text"
+                    app:hintTextColor="@color/black">
                     <AutoCompleteTextView
-                        android:id="@+id/etAddress"
+                        android:id="@+id/etPhoneNo"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Enter address(House no.,Area,etc)"
-                        android:inputType="text"/>
+                        android:hint="Phone no."
+                        android:digits="0123456789"
+                        android:maxLength="10"/>
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.button.MaterialButton

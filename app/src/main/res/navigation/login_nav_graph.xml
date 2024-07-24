@@ -14,6 +14,7 @@
             android:id="@+id/action_splashFragment_to_loginFragment"
             app:destination="@id/loginFragment"
             app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/from_left"
             app:popUpTo="@id/splashFragment"
             app:popUpToInclusive="true" />
     </fragment>
@@ -23,20 +24,25 @@
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
         <action
-            android:id="@+id/action_loginFragment_to_otpFragment"
-            app:enterAnim="@anim/from_right"
-            app:destination="@id/otpFragment" />
+            android:id="@+id/action_loginFragment_to_registerFragment"
+            app:destination="@id/registerFragment"
+            app:exitAnim="@anim/from_left"
+            app:enterAnim="@anim/from_right"/>
     </fragment>
     <fragment
-        android:id="@+id/otpFragment"
-        android:name="com.example.blinkit.auth.OtpFragment"
-        android:label="fragment_otp"
-        tools:layout="@layout/fragment_otp" >
+        android:id="@+id/registerFragment"
+        android:name="com.example.blinkit.auth.RegisterFragment"
+        android:label="fragment_register"
+        tools:layout="@layout/fragment_register" >
         <action
-            android:id="@+id/action_otpFragment_to_loginFragment"
+            android:id="@+id/action_registerFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_registerFragment_to_loginFragment2"
             app:destination="@id/loginFragment"
             app:popUpTo="@id/loginFragment"
-            app:enterAnim="@anim/from_left"
-            app:popUpToInclusive="true" />
+            app:popUpToInclusive="true"
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/from_left"/>
     </fragment>
 </navigation>
