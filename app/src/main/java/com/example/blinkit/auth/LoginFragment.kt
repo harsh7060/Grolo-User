@@ -59,10 +59,11 @@ class LoginFragment : Fragment() {
                 lifecycleScope.launch {
                     viewModel.isSignedInSuccessfully.collect{
                         if(it){
-                            Utils.showToast(requireContext(), "Login Successfully")
                             Utils.hideDialog()
                             startActivity(Intent(requireContext(), UsersMainActivity::class.java))
                             requireActivity().finish()
+                        }else{
+                            Utils.hideDialog()
                         }
                     }
                 }

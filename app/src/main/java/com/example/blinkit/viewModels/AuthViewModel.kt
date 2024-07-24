@@ -35,9 +35,10 @@ class AuthViewModel: ViewModel(){
         Utils.getAuthInstance().signInWithEmailAndPassword(email, password)
             .addOnCompleteListener{task->
                 if(task.isSuccessful){
+                    Utils.showToast(context, "LoggedIn Successfully")
                     isSignedInSuccessfully.value = true
                 }else{
-                    Utils.showToast(context, "Login Unsuccessfully")
+                    Utils.showToast(context, "Wrong Credentials")
                 }
             }
     }
