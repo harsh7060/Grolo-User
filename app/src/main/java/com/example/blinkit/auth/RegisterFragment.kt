@@ -1,6 +1,7 @@
 package com.example.blinkit.auth
 
 import android.app.AlertDialog
+import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -14,6 +15,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.blinkit.R
+import com.example.blinkit.activities.UsersMainActivity
 import com.example.blinkit.databinding.FragmentRegisterBinding
 import com.example.blinkit.models.User
 import com.example.blinkit.utils.Utils
@@ -57,7 +59,8 @@ class RegisterFragment : Fragment() {
                         if(it){
                             Utils.showToast(requireContext(), "User Registered Successfully✅")
                             Utils.hideDialog()
-                            findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
+                            startActivity(Intent(requireContext(), UsersMainActivity::class.java))
+                            requireActivity().finish()
                         }
                     }
                 }

@@ -33,16 +33,5 @@
         android:id="@+id/registerFragment"
         android:name="com.example.blinkit.auth.RegisterFragment"
         android:label="fragment_register"
-        tools:layout="@layout/fragment_register" >
-        <action
-            android:id="@+id/action_registerFragment_to_loginFragment"
-            app:destination="@id/loginFragment" />
-        <action
-            android:id="@+id/action_registerFragment_to_loginFragment2"
-            app:destination="@id/loginFragment"
-            app:popUpTo="@id/loginFragment"
-            app:popUpToInclusive="true"
-            app:enterAnim="@anim/from_right"
-            app:exitAnim="@anim/from_left"/>
-    </fragment>
+        tools:layout="@layout/fragment_register" />
 </navigation>

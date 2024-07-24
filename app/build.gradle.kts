@@ -71,7 +71,7 @@ dependencies {
     implementation("com.google.firebase:firebase-analytics")
 
     // Import the Firebase BoM
-    implementation(platform("com.google.firebase:firebase-bom:33.1.1"))
+    implementation(platform("com.google.firebase:firebase-bom:33.1.2"))
     implementation("com.google.firebase:firebase-analytics")
     implementation ("com.google.firebase:firebase-auth-ktx")
     implementation("com.google.android.gms:play-services-auth-api-phone:18.1.0")
