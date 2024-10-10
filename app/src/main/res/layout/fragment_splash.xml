@@ -26,7 +26,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="91.00dp"
-                android:text="blinkit"
+                android:text="Grolo"
                 android:textColor="@color/black"
                 android:textSize="78.00dp"
                 android:textStyle="bold" />
@@ -53,15 +53,7 @@
             android:layout_marginTop="26.00dp"
             android:layout_weight="3"
             android:background="@color/black" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="A ZOMATO COMPANY"
-            android:letterSpacing="0.1"
-            android:textSize="10.40sp"
-            android:layout_marginTop="26.00dp"
-            android:textStyle="bold"
-            android:textColor="@color/black"/>
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
